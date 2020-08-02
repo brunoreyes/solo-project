@@ -9,6 +9,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const imageUrlRouter = require('./routes/image-url.router');
 // UploaderS3Router added below
 const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 
@@ -25,6 +26,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/imageurl', imageUrlRouter);
 // AWS S3 image upload
 app.use(
   '/s3',
@@ -35,6 +37,11 @@ app.use(
     ACL: 'public-read', // this is the default - set to `public-read` to let anyone view uploads
   })
 );
+
+// app.post('/*', (req, res) => {
+//   console.log('GOT IT');
+
+// })
 
 // Serve static files
 app.use(express.static('build'));

@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
+
 // s3 comes from react
 
 class ImageUpload extends Component {
+  handleFinishedUpload = (info) => {
+    console.log('info:', info);
+    console.log('File uploaded with filename:', info.filename);
+    console.log('Access it on s3 at:', info.fileUrl);
+    this.props.dispatch({ type: 'POST_IMAGE_URL', payload: info.fileUrl });
+  };
   render() {
     const uploadOptions = {
-      server: 'http://localhost:5000',
+      server: 'https://warm-shore-09020.herokuapp.com',
+      //   server: 'https://localhost:5000',
     };
 
     const s3Url = 'http://brunobucket.s3.amazonaws.com';
