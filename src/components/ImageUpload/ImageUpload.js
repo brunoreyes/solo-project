@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
+import './ImageUpload.css';
 
 // s3 comes from react
 const dropStyles = {
   width: '200px',
   height: '50px',
+  border: '1px solid black',
   'background-color': '#dddddd',
 };
 class ImageUpload extends Component {
@@ -24,7 +26,7 @@ class ImageUpload extends Component {
     const s3Url = 'http://brunobucket.s3.amazonaws.com';
 
     const innerDropElement = (
-      <div>
+      <div class="inner-drop">
         <p>Upload or Drop Image</p>
       </div>
     );
